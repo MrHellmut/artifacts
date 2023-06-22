@@ -37,10 +37,10 @@ jobs:
         run: npm ci
       - name: Build website
         run: npm run build
-      - name: Publish JS filename
+      - name: Publish JS filename # following sets output
         id: publish
         run: find dist/assets/*.js -type f -execdir echo 'script-file={}' >> $GITHUB_OUTPUT ';'
-      - name: Upload artifacts
+      - name: Upload artifacts #uploads build files located in dist folder
         uses: actions/upload-artifact@v3
         with:
           name: dist-files
